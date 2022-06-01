@@ -3,7 +3,9 @@ export const parseEnv = () => {
     const variables = process.env;
 
     for (let key in variables) {
-        str = `${str}RSS_${key}=${variables[key]}; `;
+        if (key.includes('RSS_')) {
+            str = `${str}${key}=${variables[key]}; `;
+        }
     }
 
     console.log(str);
